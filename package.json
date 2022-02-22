@@ -2,7 +2,7 @@
   "name": "diplom",
   "version": "1.0.0",
   "description": "graduation project",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
