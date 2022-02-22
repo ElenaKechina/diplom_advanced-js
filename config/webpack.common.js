@@ -1,13 +1,15 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('babel-polyfill');
 
-const paths = require('./paths')
+const paths = require('./paths');
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
-
+  entry: {
+    app: ['babel-polyfill', paths.src + '/index.js'],
+  },
   // Where webpack outputs the assets and bundles
   output: {
     path: paths.build,
@@ -66,4 +68,4 @@ module.exports = {
       assets: paths.public,
     },
   },
-}
+};

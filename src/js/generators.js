@@ -9,7 +9,7 @@ import { getRandomIntInclusive } from './utils';
  */
 export function* characterGenerator(allowedTypes, maxLevel) {
   const index = getRandomIntInclusive(allowedTypes.length - 1);
-  const level = getRandomIntInclusive(maxLevel);
+  const level = getRandomIntInclusive(maxLevel, 1);
 
   yield new allowedTypes[index](level);
 
@@ -19,11 +19,10 @@ export function* characterGenerator(allowedTypes, maxLevel) {
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   // TODO: write logic here
   const team = [];
-  team.length(characterCount);
 
-  team.forEach((value, index) => {
-    team[index] = [...characterGenerator(allowedTypes, maxLevel)][0];
-  });
+  for (let i = 0; i < characterCount; i++) {
+    team[i] = [...characterGenerator(allowedTypes, maxLevel)][0];
+  }
 
   return team;
 }
